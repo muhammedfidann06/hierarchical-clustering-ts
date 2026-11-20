@@ -1,7 +1,5 @@
 /**
  * Hierarchical Agglomerative Clustering (HAC)
- *
- * Kommentare auf Deutsch (Niveau A2).
  */
 
 export type Point = number[];

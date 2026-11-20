@@ -1,7 +1,6 @@
 # 🌳 Hierarchical Clustering in TypeScript
 
 A from-scratch implementation of **Hierarchical Agglomerative Clustering (HAC)** – no ML libraries.
-Code comments are in **German (A2 level)**.
 
 ## Features
 - Linkage methods: **single, complete, average, Ward** (via the Lance–Williams update formula)

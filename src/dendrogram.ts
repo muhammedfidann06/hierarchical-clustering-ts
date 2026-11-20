@@ -2,7 +2,6 @@ import { Merge } from "./clustering";
 
 /**
  * Wir zeichnen das Dendrogramm als SVG-Bild.
- * Kommentare auf Deutsch (Niveau A2).
  */
 export function dendrogramSvg(
   merges: Merge[],
