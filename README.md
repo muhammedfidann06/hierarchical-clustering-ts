@@ -1,6 +1,11 @@
 # 🌳 Hierarchical Clustering in TypeScript
 
+[![tests](https://github.com/muhammedfidann06/hierarchical-clustering-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/muhammedfidann06/hierarchical-clustering-ts/actions/workflows/ci.yml)
+
 A from-scratch implementation of **Hierarchical Agglomerative Clustering (HAC)** – no ML libraries.
+
+> 🇩🇪 **Kurzbeschreibung:** Hierarchisches Clustering ohne fertige Bibliotheken – vier Linkage-Methoden,
+> Silhouette-Koeffizient und Dendrogramme als SVG. Mit Unit-Tests und CI.
 
 ## Features
 - Linkage methods: **single, complete, average, Ward** (via the Lance–Williams update formula)
