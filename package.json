@@ -1,0 +1,16 @@
+{
+  "name": "hierarchical-clustering-ts",
+  "version": "1.0.0",
+  "description": "Hierarchical Agglomerative Clustering from scratch in TypeScript",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc",
+    "demo": "tsc && node dist/src/index.js",
+    "test": "tsc && node --test dist/test/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0"
+  }
+}
