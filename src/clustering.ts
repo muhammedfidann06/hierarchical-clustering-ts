@@ -223,3 +223,35 @@ export function silhouette(points: Point[], labels: number[], metric: Metric = "
   }
   return total / n;
 }
+
+// ---------------------------------------------------------------------------
+// Wie viele Cluster? Das beste k mit dem Silhouette-Wert finden
+// ---------------------------------------------------------------------------
+export interface BestK {
+  k: number;
+  score: number;
+  scores: { k: number; score: number }[]; // für alle getesteten k – gut für ein Diagramm
+}
+
+/**
+ * Probiert k = minK … maxK und nimmt das k mit dem höchsten Silhouette-Wert.
+ * Das Dendrogramm rechnen wir nur EINMAL – danach schneiden wir es nur anders.
+ */
+export function bestK(
+  points: Point[],
+  opts: HacOptions & { minK?: number; maxK?: number } = {},
+): BestK {
+  const n = points.length;
+  const minK = Math.max(2, opts.minK ?? 2); // Silhouette braucht mindestens 2 Cluster
+  const maxK = Math.min(n - 1, opts.maxK ?? 10);
+  if (minK > maxK) throw new Error("Zu wenige Punkte für die Suche nach k.");
+
+  const merges = agglomerate(points, opts);
+  const scores: { k: number; score: number }[] = [];
+  for (let k = minK; k <= maxK; k++) {
+    const labels = cutTree(merges, n, k);
+    scores.push({ k, score: silhouette(points, labels, opts.metric ?? "euclidean") });
+  }
+  const best = scores.reduce((a, b) => (b.score > a.score ? b : a));
+  return { k: best.k, score: best.score, scores };
+}
