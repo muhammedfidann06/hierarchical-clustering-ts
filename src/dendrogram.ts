@@ -1,5 +1,14 @@
 import { Merge } from "./clustering";
 
+// Sonderzeichen für XML ersetzen. Sonst macht ein Label wie "R&D" oder "A<B" das SVG kaputt.
+export function escapeXml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 /**
  * Wir zeichnen das Dendrogramm als SVG-Bild.
  */
@@ -52,7 +61,7 @@ export function dendrogramSvg(
   });
 
   const text = order
-    .map((leaf) => `<text x="${x.get(leaf)}" y="${height - 10}">${labels[leaf] ?? leaf}</text>`)
+    .map((leaf) => `<text x="${x.get(leaf)}" y="${height - 10}">${escapeXml(String(labels[leaf] ?? leaf))}</text>`)
     .join("");
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">

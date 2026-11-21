@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "demo": "tsc && node dist/src/index.js",
-    "test": "tsc && node --test dist/test/clustering.test.js dist/test/bestk.test.js"
+    "test": "tsc && node --test dist/test/clustering.test.js dist/test/bestk.test.js dist/test/dendrogram.test.js"
   },
   "license": "MIT",
   "devDependencies": {
